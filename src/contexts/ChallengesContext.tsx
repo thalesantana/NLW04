@@ -40,6 +40,10 @@ export function ChallengesProvider({children}: ChallegensProviderProps){
 
     const experienceToNextLevel = Math.pow((level + 1)* 4,2)
 
+    useEffect(()=> {
+        Notification.requestPermission();
+    }, [])
+
     // COUNTDOWN CONTEXT //
     
     let countdownTimeout: NodeJS.Timeout;
@@ -83,6 +87,13 @@ export function ChallengesProvider({children}: ChallegensProviderProps){
     function startNewChallenge(){
         const randomChallengeIndex = Math.floor(Math.random() * challenges.length)
         const challenge = challenges[randomChallengeIndex]
+
+        if (Notification.permission === 'granted') {
+            new Notification('Novo desafio 🥳 ',{
+                body: `Valendo ${challenge.amount}xp!`
+            })
+        }
+        new Audio('/notification.mp3').play()
 
         setActiveChallenge(challenge);
     }
