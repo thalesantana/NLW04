@@ -15,7 +15,6 @@ Tecnologias e ferramentas utilizadas no desenvolvimento do projeto:
 - [React](https://reactjs.org/)
 - [Next.js](https://nextjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-
 <br>
 
 ## Instalação e uso
