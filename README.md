@@ -1,5 +1,8 @@
-# Move.it
-<img src="https://i.picasion.com/pic90/eb87e5502b1179e8de83cae0e583f9ac.gif"/>
+<h1 align="center">Move.It</h1>
+
+<p align="center" >
+  <img src="https://i.picasion.com/pic90/eb87e5502b1179e8de83cae0e583f9ac.gif" width="600"/>
+</p>
 
 ## Sobre o Move.it
 
@@ -32,6 +35,9 @@ $ yarn install
 
 # Rode o aplicação
 $ yarn start
+
+# Acesse em seu navegador o link
+http://localhost:3000
 ```
 
 <br>
