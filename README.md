@@ -1,10 +1,10 @@
-<h1 align="center">Move.It</h1>
+<h1 align="center">[Move.it](https://moveit-thalesantana.vercel.app/)</h1>
 
 <p align="center" >
   <img src="https://i.picasion.com/pic90/27adfebb8d1f67a180e30f9f2bbd70fd.gif"/>
 </p>
 
-## Sobre o Move.it
+## Sobre o [Move.it](https://moveit-thalesantana.vercel.app/)
 
 O [Move.it](https://moveit-thalesantana.vercel.app/) é um App que utiliza a técnica de [pomodoro](https://pt.wikipedia.org/wiki/T%C3%A9cnica_pomodoro), com o objetivo de melhorar sua produtividade e foco. Desenvolvido durante a Next Level Week #4 da [Rocketseat](https://rocketseat.com.br/).
 
