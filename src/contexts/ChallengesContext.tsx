@@ -1,5 +1,7 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
-import challenges from '../../challenges.json'
+import Cookies from 'js-cookie';
+import challenges from '../../challenges.json';
+import { LevelUpModal } from '../components/LevelUpModal';
 
 interface Challenge{
     type: 'body' | 'eye';
@@ -23,20 +25,29 @@ interface ChallengesContextsData{
     completedChallenge: () => void;
     startCountdown:() => void;
     resetCountdown:() => void;
+    CloseLevelUpModal:() => void;
 }
 
-interface ChallegensProviderProps{
-    children: ReactNode
+interface ChallengesProviderProps{
+    children: ReactNode;
+    level: number;
+    currentExperience: number;
+    challengesCompleted: number;
 }
 
 export const ChallengesContext = createContext({} as ChallengesContextsData);
 
-export function ChallengesProvider({children}: ChallegensProviderProps){
-    const [level, setLevel] = useState(1);
-    const [currentExperience, setCurrentExperience] = useState(0);
-    const [challengesCompleted, setChallengesCompleted] = useState(0);
+export function ChallengesProvider({
+    children, 
+    ...rest
+}: ChallengesProviderProps){
+
+    const [level, setLevel] = useState(rest.level );
+    const [currentExperience, setCurrentExperience] = useState(rest.currentExperience);
+    const [challengesCompleted, setChallengesCompleted] = useState(rest.challengesCompleted);
 
     const [activeChallenge, setActiveChallenge] =useState(null)
+    const [isLevelUpModalOpen, setIsLevelUpModalOpen] =useState(false)
 
     const experienceToNextLevel = Math.pow((level + 1)* 4,2)
 
@@ -44,6 +55,11 @@ export function ChallengesProvider({children}: ChallegensProviderProps){
         Notification.requestPermission();
     }, [])
 
+    useEffect(() => {
+        Cookies.set('level',String(level));
+        Cookies.set('currentExperience',String(currentExperience));
+        Cookies.set('challengesCompleted',String(challengesCompleted))
+    }, [level,currentExperience, challengesCompleted])
     // COUNTDOWN CONTEXT //
     
     let countdownTimeout: NodeJS.Timeout;
@@ -82,8 +98,13 @@ export function ChallengesProvider({children}: ChallegensProviderProps){
     // CHALLENGE CONTEXT //
     function levelUp(){
         setLevel(level + 1);
+        setIsLevelUpModalOpen(true)
     }
     
+    function CloseLevelUpModal(){
+        setIsLevelUpModalOpen(false)
+    }
+
     function startNewChallenge(){
         const randomChallengeIndex = Math.floor(Math.random() * challenges.length)
         const challenge = challenges[randomChallengeIndex]
@@ -133,7 +154,8 @@ export function ChallengesProvider({children}: ChallegensProviderProps){
                 resetCountdown,
                 startCountdown,
                 level, 
-                levelUp, 
+                levelUp,
+                CloseLevelUpModal, 
                 currentExperience,
                 experienceToNextLevel, 
                 challengesCompleted,
@@ -144,6 +166,7 @@ export function ChallengesProvider({children}: ChallegensProviderProps){
                 }}
             >
             {children}
+        { isLevelUpModalOpen && <LevelUpModal />}
         </ChallengesContext.Provider>
     ); 
 }
