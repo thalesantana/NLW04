@@ -1,7 +1,7 @@
 <h1 align="center">Move.It</h1>
 
 <p align="center" >
-  <img src="https://i.picasion.com/pic90/eb87e5502b1179e8de83cae0e583f9ac.gif" width="600"/>
+  <img src="https://i.picasion.com/pic90/27adfebb8d1f67a180e30f9f2bbd70fd.gif"/>
 </p>
 
 ## Sobre o Move.it
