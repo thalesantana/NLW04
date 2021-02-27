@@ -18,7 +18,7 @@ Tecnologias e ferramentas utilizadas no desenvolvimento do projeto:
 <br>
 
 ## Instalação e uso
-
+Acesse por este link: https://moveit-thalesantana.vercel.app/ ou se preferir rodar em sua máquina:
 ```bash
 # Abra um terminal e copie este repositório com o comando
 $ git clone https://github.com/thalesantana/moveit
