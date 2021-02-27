@@ -8,6 +8,7 @@ import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import styles from '../styles/pages/Home.module.css'
 import { ChallengesProvider } from '../contexts/ChallengesContext';
+import { CountdownContext, CountdownProvider } from '../contexts/CountdownContext';
 
 interface HomeProps{
     level: number;
@@ -30,6 +31,7 @@ export default function Home(props: HomeProps) {
 
       <ExperienceBar/>
 
+      <CountdownProvider>
       <section>
         <div >
           <Profile />
@@ -40,7 +42,10 @@ export default function Home(props: HomeProps) {
           <ChallengeBox />
         </div>
       </section>
+      </CountdownProvider>
     </div>
+ 
+    
     </ChallengesProvider>
   )
 }
